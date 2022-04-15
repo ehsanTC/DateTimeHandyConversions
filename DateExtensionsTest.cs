@@ -81,43 +81,6 @@ namespace Doctors.Service.Extensions
             Assert.Equal(actual, expected);
         }
 
-        
-        /// <summary>
-        /// The test is used to 
-        /// </summary>
-        [Fact]
-        public void Test_Convert_Extension_Method()
-        {
-            var date1 = DateTimeOffset.Parse("3/10/2022 22:00:00 -08:00");
-            var startTime = new TimeSpan(18, 30, 0);
-            var duration = TimeSpan.FromMinutes(30);
-            var endTime = startTime + duration;
-
-            var flatAvailableDate = new FlatAvailableDateModel()
-            {
-                Date = date1,
-                DoctorOffice = new ClinicOutputViewModel() {ClinicId = 1},
-                FreeTime = new FreeTimeOutputViewModel()
-                {
-                    AvailableTime = startTime,
-                    EndTime = endTime
-                }
-            };
-
-            new List<FlatAvailableDateModel>() {flatAvailableDate}
-                .ConvertTo("Pacific Standard Time", "Iran Standard Time");
-
-
-            var expectedStartTime = new TimeSpan(30, 0, 0);
-            var expectedEndTime = expectedStartTime + duration;
-
-            Assert.Equal(expectedStartTime.Hours, flatAvailableDate.FreeTime.AvailableTime.Hours);
-            Assert.Equal(expectedEndTime.Hours, flatAvailableDate.FreeTime.EndTime.Hours);
-
-            if (!DateTime.Equals(date1.Date, flatAvailableDate.Date.Date))
-                Assert.Equal(1, Math.Abs(date1.Date.Subtract(flatAvailableDate.Date.Date).Days));
-        }
-
         [Theory]
         [InlineData("Iran Standard Time", "UTC", "03:30")]
         [InlineData("UTC", "Iran Standard Time", "-3:30")]
