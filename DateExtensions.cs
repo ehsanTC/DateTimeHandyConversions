@@ -1,7 +1,7 @@
 ﻿using System;
 using TimeZoneConverter;
 
-namespace Doctors.Service.Extensions
+namespace DateConversion.Extensions
 {
     public static class DateExtensions
     {
@@ -18,9 +18,23 @@ namespace Doctors.Service.Extensions
 
         public static DateTimeOffset AddTimeZone(this DateTime baseDate, TimeSpan offset) => new(baseDate.Ticks, offset);
 
+        /// <summary>
+        /// Converts a DateTime to another DateTimeOffset
+        /// </summary>
+        /// <param name="baseDate">The date which its time will be set.</param>
+        /// <param name="targetZone">The preferred target time zone.</param>
+        /// <returns>A new DateTime that its date and time is changed to the target time zone.</returns>
         public static DateTimeOffset ConvertByTimeZone(this DateTime baseDate, string targetZone) =>
             ConvertByTimeZone(baseDate, TimeSpan.Zero, targetZone);
 
+        
+        /// <summary>
+        /// Converts a DateTime to another DateTimeOffset and adds a time span to it
+        /// </summary>
+        /// <param name="baseDate">The date which its time will be set.</param>
+        /// <param name="offset">Adds an offset to the converted DateTimeOffset.</param>
+        /// <param name="targetZone">The preferred target time zone.</param>
+        /// <returns>A new DateTime that its date and time is changed to the target time zone.</returns>
         public static DateTimeOffset ConvertByTimeZone(this DateTime baseDate, TimeSpan offset, string targetZone)
         {
             TimeZoneInfo zone = TZConvert.GetTimeZoneInfo(targetZone);
