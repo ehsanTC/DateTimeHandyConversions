@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Doctors.Service.Gen.ViewModels.Output;
-using Doctors.Service.Models;
-using Doctors.Service.ViewModels.Output;
 using TimeZoneConverter;
 using Xunit;
 
