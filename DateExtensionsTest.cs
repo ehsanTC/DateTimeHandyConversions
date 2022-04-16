@@ -6,7 +6,7 @@ using Doctors.Service.ViewModels.Output;
 using TimeZoneConverter;
 using Xunit;
 
-namespace Doctors.Service.Extensions
+namespace Tests
 {
     public class DateExtensionsTest
     {
