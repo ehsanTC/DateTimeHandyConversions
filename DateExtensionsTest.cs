@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TimeZoneConverter;
 using Xunit;
 
-namespace Tests
+namespace DateConversion.Tests
 {
     public class DateExtensionsTest
     {
